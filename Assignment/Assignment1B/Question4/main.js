@@ -7,18 +7,31 @@
 23-yes, 15-no, 22-no, 124-no, 11-yes, 9-no, 2-yes, 13-yes, 5-yes, 1-no
 */
 
-console.log("===============")
+
 
 // Input and variables
-var numberArray = [23, 15, 22, 124, 11, 9, 2, 13, 5, 1];
+var randomNumber = 0;
+var numberArray = [];
 var stringOutput = "";
 
+
 // Processing
+
+// generate random number and push it into the numberArray array 10 times 
+for(var a = 0; a < 10; a++)
+{
+    randomNumber = Math.floor(Math.random() * (999 - 1 + 1)) + 1;
+
+    numberArray.push(randomNumber);
+}
+
+
 for(var i = 0; i < numberArray.length; i++)
 {
     // assume that every number in the array is a prime number.
     primeFlag = true;
 
+    // 1 is not a prime number. 
     if(numberArray[i] == 1)
     {
         primeFlag = false;
@@ -51,5 +64,6 @@ for(var i = 0; i < numberArray.length; i++)
 stringOutput = numberArray.join(', ');
 
 // Output
+console.log("Output:")
 console.log(stringOutput)
 
