@@ -1,5 +1,3 @@
-
-
 /*
     Author: Darin Kim
     Date: Jan. 21, 2019
@@ -13,26 +11,43 @@ Write a function in JavaScript that will receive a string as a parameter and the
 
 */
 
-
+function modifyString (string)
+{
     // Input and variables
-    var string = "Triscuit";
-    var firstLetter = "";
-    var lastLetter = "";
-    var middleLetter = "";
+    var splitString = [];
+    var firstChar = "";
+    var lastChar = "";
+    var removedString = "";
+    var reversedArray = [];
+    var reversedString = "";
+
 
     // Processing
+    splitString = string.split("");
+    firstChar = splitString[0];
+    lastChar = splitString[splitString.length-1];
 
-    middleLetter = string.substring(1, string.length-1);
-
-    if(string.substring(0,1) === string.substring(string.length - 1, string.length))
+    
+    if(firstChar.toLowerCase() === lastChar)
     {
-        firstLetter = string.substring(string.length - 1, string.length);
-        lastLetter = string.substring(0,1);
+        reversedArray = splitString.reverse();
+
+        reversedString = reversedArray.join("");
+
+        return reversedString
     }
+    else
+    {
+        removedString = string.substring(1,string.length-1)
+
+        return removedString;
+    }
+
+}
 
 
     // Output
+    console.log(modifyString ("Triscuit"))
+    console.log(modifyString ("Cracker"))
 
-    console.log(firstLetter + middleLetter + lastLetter)
 
-	
