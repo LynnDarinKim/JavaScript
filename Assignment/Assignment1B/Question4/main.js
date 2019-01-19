@@ -64,6 +64,6 @@ for(var i = 0; i < numberArray.length; i++)
 stringOutput = numberArray.join(', ');
 
 // Output
-console.log("Output:")
+console.log("Output:");
 console.log(stringOutput)
 
