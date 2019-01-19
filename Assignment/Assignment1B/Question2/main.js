@@ -1,37 +1,23 @@
-"use strict";
-var readlineSync = require('readline-sync');
-
 /*
     Author: Darin Kim
-    Date: Sept. 28, 2018
-    Description: 
+    Date: Jan. 21, 2019
+    Description: Write a function in JavaScript that will return the sum of the longest streak of consecutive numbers within an array. 
+•	If there are no consecutive numbers in the array, the function will return zero.
+•	If there are multiple instances of the same number of consecutive numbers in the array, the function will return the largest sum calculated between all instances.
+
+•	Examples:
+o	[1, 2, 3, 6, 9, 34, 2, 6] would return 6 (1+2+3)
+o	[3, 2, 7, 5, 6, 7, 3, 8, 9, 10, 23, 2, 1, 2, 3] would return 27 (8+9+10)
+o	[100, 101, 102, 3, 4, 5, 6, 9] would return 18 (3+4+5+6)
+
 
 */
 
-function main()
-{
+
     // Input and variables
-    var pounds = parseFloat(readlineSync.question("How many pounds of oranges do you want? "));
-    var cost_per_pound = 1.99;
-    var flat_shipping_cost = 7.50;
-    var shipping_discount = 1.50;
-    var user_location = readlineSync.question("Where are you from? ");
+
 
     // Processing
-    var final_cost = pounds * cost_per_pound + flat_shipping_cost;
-    var discounted_shipping_cost = flat_shipping_cost - shipping_discount;
 
-    if (pounds >= 100 || user_location.toUpperCase() == "HALIFAX")
-    {
-        final_cost = pounds * cost_per_pound + discounted_shipping_cost;
-    }
 
     // Output
-    console.log(`Your final cost is: $${final_cost.toFixed(2)}`)
-
-}
-	
-if (require.main === module)
-{
-    main();
-}
