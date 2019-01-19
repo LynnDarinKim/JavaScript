@@ -4,11 +4,12 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "http://localhost:80/Demos/FirstDemo",
+            "url": "http://localhost:80/Assignment1B/Question1",
             "webRoot": "${workspaceFolder}"
         }
     ]

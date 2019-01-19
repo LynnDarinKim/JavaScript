@@ -1,0 +1,22 @@
+console.log();
+
+put it in a function - write a function that returns... 
+ex)
+
+function someFunction(){
+	// console.log('hello');
+	return 'hello';
+}
+
+console.log(someFunction()); 
+
+
+/ otherwise doesn't have to be in a function
+
+
+
+
+question1: do not write code within the function . function - return . dont' console.log()
+
+birthday : just math .. day now / instance / birthday -> month day hours.. 
+

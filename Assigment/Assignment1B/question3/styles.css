@@ -1,0 +1,8 @@
+p {
+    font-size: 1.5rem;
+}
+
+.counter-number {
+    font-weight: bold;
+    color: rgba(0, 68, 255, 0.849);
+}
