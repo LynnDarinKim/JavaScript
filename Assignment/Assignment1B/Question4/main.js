@@ -10,21 +10,46 @@
 function checkPrimaryNumber()
 {
     // Input and variables
-    var number1 = 23;
-    var number2 = 124;
+    var numberArray = [23, 15, 22, 124, 11, 9, 2, 13, 5, 1];
 
     // Processing
-    for(var i = 2; i < number1; i++)
+
+    for(var i = 0; i < numberArray.length; i++)
     {
-        if(number1 % i === 0)
+
+        // assume that every number in the array is a prime number.
+        primeFlag = true;
+
+        // check factors from 2 to a number less than selected number (ex. 2 ~ 22)
+        for(var j = 2; j < numberArray[i]; j++)
         {
-            return false;
+
+            if(numberArray[i] == 1)
+            {}
+
+            if(numberArray[i] % j == 0)
+            {
+                // if the remainder is 0, it means there are more factors. = not a prime number. 
+                primeFlag = false;
+                console.log(`${numberArray[i]}-no`)
+                // if factor appears, there's no need to check more. so use break to leave the for loop.  
+                break;
+            }
         }
-        return number1 !==1 && number1 !==0;
+
+        if(primeFlag)
+        {
+            console.log(`${numberArray[i]}-yes`)
+        }
+
     }
+
+
 
     // Return
 
 }
+console.log("===============")
+checkPrimaryNumber();
 
 // Output
