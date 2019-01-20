@@ -17,8 +17,6 @@ console.log("snowy snowy")
 console.log("-------------")
 
 
-function calculateSumOfConsecutiveNumbers()
-{
 
 
     // Input and variables
@@ -45,7 +43,5 @@ function calculateSumOfConsecutiveNumbers()
     // Output
 
 
-}
 
-console.log(calculateSumOfConsecutiveNumbers());
 
