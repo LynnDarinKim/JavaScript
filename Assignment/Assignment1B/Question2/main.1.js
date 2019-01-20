@@ -13,6 +13,7 @@ o	[100, 101, 102, 3, 4, 5, 6, 9] would return 18 (3+4+5+6)
 
 */
 
+console.log("snowy snowy")
 console.log("-------------")
 
 
@@ -21,9 +22,9 @@ function calculateSumOfConsecutiveNumbers()
 
 
     // Input and variables
-    // var numberArray = [1, 2, 3, 6, 9, 34, 2, 6];
+    var numberArray = [1, 2, 3, 6, 9, 34, 2, 6];
     // var numberArray = [3, 2, 7, 5, 6, 7, 3, 8, 9, 10, 23, 2, 1, 2, 3];
-    var numberArray = [100, 101, 102, 3, 4, 5, 6, 9] ;
+    // var numberArray = [100, 101, 102, 3, 4, 5, 6, 9] ;
     var difference = 1;
     var resultArray = [];
 
@@ -31,18 +32,20 @@ function calculateSumOfConsecutiveNumbers()
     // Processing
     for (var i = 0; i < numberArray.length; i++)
     {
-        if(numberArray[i]+1 == numberArray[i+1] && numberArray[i+1]+1 == numberArray[i+2] )
+        if(numberArray[i]+1 == numberArray[i+1] && numberArray[i+1]+1 == numberArray[i+2])
         {
             resultArray.push(numberArray[i])
-
+            resultArray.push(numberArray[i+1])
+            resultArray.push(numberArray[i+2])
         }
 
     }
 
-return resultArray;
+    return resultArray;
     // Output
 
 
 }
 
-console.log(calculateSumOfConsecutiveNumbers())
+console.log(calculateSumOfConsecutiveNumbers());
+
