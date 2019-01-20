@@ -20,7 +20,7 @@ var stringOutput = "";
 // generate random number and push it into the numberArray array 10 times 
 for(var a = 0; a < 10; a++)
 {
-    randomNumber = Math.floor(Math.random() * (999 - 1 + 1)) + 1;
+    randomNumber = Math.floor(Math.random() * (124 - 1 + 1)) + 1;
 
     numberArray.push(randomNumber);
 }
@@ -32,7 +32,7 @@ for(var i = 0; i < numberArray.length; i++)
     primeFlag = true;
 
     // 1 is not a prime number. 
-    if(numberArray[i] == 1)
+    if(numberArray[i] === 1)
     {
         primeFlag = false;
         numberArray[i] = numberArray[i] + "-no";
@@ -43,7 +43,7 @@ for(var i = 0; i < numberArray.length; i++)
     for(var j = 2; j < numberArray[i]; j++)
     {
 
-        if(numberArray[i] % j == 0)
+        if(numberArray[i] % j === 0)
         {
             // if the remainder is 0, it means there are more factors. = not a prime number. 
             primeFlag = false;
