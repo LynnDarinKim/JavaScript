@@ -9,9 +9,8 @@
 
 console.log("-------------")
 
-
-
     // Input and variables
+
     // var numArray = [1, 9, 5, 9, 7];
     //return zero
     
@@ -21,14 +20,14 @@ console.log("-------------")
     // var numArray = [3, 2, 7, 5, 6, 7, 3, 8, 9, 10, 23, 2, 1, 2, 3]; 
     // return 27 (8+9+10)
     
-    var numArray = [100, 101, 102, 3, 4, 5, 6, 9] ; 
+    // var numArray = [100, 101, 102, 3, 4, 5, 6, 9] ; 
     // return 18 (3+4+5+6)
+
 
 
     // Processing
 
     var counter = 0;
-    var result = false;
 
     var seqArray = [];
     
@@ -36,7 +35,6 @@ console.log("-------------")
     {
         if(numArray[i]+1 == numArray[i+1] && numArray[i+1]+1 == numArray[i+2])
         {
-            result = true;
             counter++;
             // console.log(counter)
 
@@ -45,24 +43,11 @@ console.log("-------------")
         }
         else
         {
-            result = false;
             // console.log("0")
             seqArray.push(0);
         }
 
     }
-    
-//     console.log("")
-//     console.log(numArray)
-// console.log(seqArray)
-
-var numseqArray = [];
-
-numseqArray.push(numArray);
-numseqArray.push(seqArray);
-
-// console.log(numseqArray);
-
 
 var longSum = 0;
 var shortSum = 0;
@@ -72,33 +57,25 @@ var shortSumArray = []
 
 var sumArray = [];
 
-for(var a = 0; a < numseqArray.length; a++)
+
+for(var a = 0; a < numArray.length; a++)
 {
-    for(var b = 0; b < numseqArray[a].length; b++)
+    if(seqArray[a+1] - seqArray[a] == 1)
     {
-
-        // if(numseqArray[1][b+1] - numseqArray[1][b] < 1)
-        // {
-        //     console.log("zero")
-        //     break;
-        // }
-
-        if(numseqArray[1][b+1] - numseqArray[1][b] == 1)
+        if(seqArray[a] + seqArray[a+1] > 2)
         {
-            if(numseqArray[1][b] + numseqArray[1][b+1] > 2)
-            {
-                longSum =numseqArray[0][b] + numseqArray[0][b+1] + numseqArray[0][b+2] + numseqArray[0][b+3]
+            longSum =numArray[a] + numArray[a+1] + numArray[a+2] + numArray[a+3]
 
                 break;
-            }
         }
+    }
 
-        if(numseqArray[1][b] !== 0 )
-        {
-            shortSum = numseqArray[0][b] + numseqArray[0][b+1]+ numseqArray[0][b+2];
-            shortSumArray.push(shortSum)
+    else if(seqArray[a] !==0)
+    {
+        shortSum = numArray[a] + numArray[a+1]+ numArray[a+2];
+        shortSumArray.push(shortSum)
 
-            var ShortComparedResult = 0;
+        var ShortComparedResult = 0;
             for(var i = 0; i < shortSumArray.length; i++)
             {
                 if(shortSumArray[i] >= ShortComparedResult)
@@ -106,12 +83,24 @@ for(var a = 0; a < numseqArray.length; a++)
                     ShortComparedResult = shortSumArray[i];
                 }
             }
-        }
-        
     }
+
 }
-console.log(longSum)
-console.log(ShortComparedResult)
+
+// console.log(longSum)
+// console.log(ShortComparedResult)
+
+
+if(longSum > 0 )
+{
+    console.log(longSum)
+}
+
+else if (longSum === 0 && ShortComparedResult > 0)
+{
+    console.log(ShortComparedResult)
+}
+
 
     // Output
 
