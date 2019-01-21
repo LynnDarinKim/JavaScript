@@ -1,7 +1,7 @@
 /*
     Author: Darin Kim
     Date: Jan. 21, 2019
-    Description: 
+    Description: Assignment 1B Question 4
     Write a JavaScript program to iterate through an array of ten(10) positive randomly generated numbers. Each number will then be checked to see if it’s a primary number.
 •	Sample Expected output (console.log()).
 23-yes, 15-no, 22-no, 124-no, 11-yes, 9-no, 2-yes, 13-yes, 5-yes, 1-no

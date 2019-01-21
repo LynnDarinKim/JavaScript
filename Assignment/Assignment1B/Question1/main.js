@@ -1,7 +1,7 @@
 /*
     Author: Darin Kim
     Date: Jan. 21, 2019
-    Description: Assignment 1B Question
+    Description: Assignment 1B Question 1
 
 Write a function in JavaScript that will receive a string as a parameter and then perform the following:
 

@@ -1,7 +1,8 @@
 /*
     Author: Darin Kim
     Date: Jan. 21, 2019
-    Description: Write a JavaScript program to calculate the number of weeks, days, hours, minutes and seconds left until midnight on your birthday.
+    Description: Assignment 1B Question 3
+    Write a JavaScript program to calculate the number of weeks, days, hours, minutes and seconds left until midnight on your birthday.
 
 •	The script does not have to prompt for your birthdate. Simply assign it to a variable and start from there.
 o	Ex: var myNextBirthday = …your code here

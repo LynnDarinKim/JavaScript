@@ -1,7 +1,8 @@
 /*
     Author: Darin Kim
     Date: Jan. 21, 2019
-    Description: Write a function in JavaScript that will return the sum of the longest streak of consecutive numbers within an array. 
+    Description: Assignment 1B Question 2
+    Write a function in JavaScript that will return the sum of the longest streak of consecutive numbers within an array. 
 •	If there are no consecutive numbers in the array, the function will return zero.
 •	If there are multiple instances of the same number of consecutive numbers in the array, the function will return the largest sum calculated between all instances.
 */
@@ -107,7 +108,7 @@ function sumConsecutiveNumbers(numArray)
     }
 }
 
-    // Example Output
+    // for example output
 
     // var numArray = [1, 9, 5, 9, 7];
     //return zero
