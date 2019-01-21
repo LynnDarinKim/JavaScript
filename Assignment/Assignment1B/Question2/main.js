@@ -18,7 +18,7 @@ function sumConsecutiveNumbers(numArray)
     var shortSum = 0;
 
     var shortSumArray = []
-    var ShortComparedResult = 0;
+    var shortComparedResult = 0;
 
     var max = 0;
 
@@ -80,9 +80,9 @@ function sumConsecutiveNumbers(numArray)
                 // if there's no longest streak, compare between numbers
                 for(var i = 0; i < shortSumArray.length; i++)
                 {
-                    if(shortSumArray[i] >= ShortComparedResult)
+                    if(shortSumArray[i] >= shortComparedResult)
                     {
-                        ShortComparedResult = shortSumArray[i];
+                        shortComparedResult = shortSumArray[i];
                     }
                 }
         }
@@ -102,9 +102,9 @@ function sumConsecutiveNumbers(numArray)
         return longSum;
     }
 
-    else if (longSum === 0 && ShortComparedResult > 0)
+    else if (longSum === 0 && shortComparedResult > 0)
     {
-        return ShortComparedResult;
+        return shortComparedResult;
     }
 }
 
