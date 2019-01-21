@@ -18,6 +18,7 @@ var stringOutput = "";
 // Processing
 
 // generate random number and push it into the numberArray array 10 times 
+//cited from my previous code practice file with Micheal Crocker. 
 for(var a = 0; a < 10; a++)
 {
     randomNumber = Math.floor(Math.random() * (124 - 1 + 1)) + 1;

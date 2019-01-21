@@ -11,6 +11,7 @@ o	There are 35 weeks, 3 days, 13 hours, 25 minutes, and 12 seconds until my next
 
 */
 
+//cited from my previous code practice file with Micheal Crocker. 
 function calculateDuration()
 {
     var countDownDate = new Date("November 28, 2019 00:00:00").getTime();
