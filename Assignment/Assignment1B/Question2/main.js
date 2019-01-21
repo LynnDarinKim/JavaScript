@@ -89,7 +89,7 @@ function sumConsecutiveNumbers(numArray)
     }
 
     // get the maximum number in the sequence array. 
-    // cited from Mozilla
+    // cited from Mozilla https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max
     max = Math.max.apply(null, seqArray);
 
     // if the maximum number is equal to 0, it means no sequence number. so return 0
