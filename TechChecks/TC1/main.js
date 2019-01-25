@@ -12,7 +12,7 @@
 * 4. All your code must be contained in the section outlined below
 */
 
-
+//               1     2     3     4     5     6      7     8
 var buttons = ["abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"] //DO NOT MODIFY
 
 
@@ -22,8 +22,47 @@ var buttons = ["abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"] //DO NOT MODIF
 //   V
 
 function convertPhoneWord(phoneWord) {
+    
+    //"1-800-HOLIDAY"
+    var phoneWordArray = [];
+    var correctedArray = [];
 
+    //[1,-,8,0,0,-,H,O,L,I,D,A,Y]
+    phoneWordArray = phoneWord.split('');
 
+    if(phoneWord === null)
+    {
+        return "";
+    }
+    else if(phoneWord === undefined)
+    {
+        return "";
+    }
+    else{
+        for(var i = 0; i < phoneWordArray.length; i++)
+        {
+            if(isNumeric(phoneWordArray[i]) == true)
+            {
+                correctedArray.push(phoneWordArray[i])
+            }
+            else if(isLetter(phoneWordArray[i]) == true)
+            {
+                for(var j = 0; j < buttons.length; j++)
+                {
+                    if(buttons[j].indexOf(phoneWord[i]) !== -1)
+                    {
+                        correctedArray.push(j+1)
+                    }
+
+                }
+
+            } 
+        }
+    }
+
+    var correctedNumber = "";
+    correctedNumber = correctedArray.join('');
+    return correctedNumber;
 
 }
 
@@ -43,15 +82,16 @@ function convertPhoneWord(phoneWord) {
 //helper functions...do not modify
 
 function isNumeric(character) {
-    return "0123456789".indexOf(character) !== -1;
-}
+    return "0123456789".indexOf(character) !== -1; // 0 return 0 / 1 return 1 / 2 return 2
+}// true or false
+
 
 function isLetter(character) {
-    character = character.toUpperCase();    
-    return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(character) !== -1;
-}
+    character = character.toUpperCase();    // change to uppercase
+    return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(character) !== -1; // A return 0 / B return 1
+}  // true false
 
-function testCode() {
+function testCode() { 
     console.assert(convertPhoneWord("1-800-HOLIDAY") === "18004654329", "Unable to convert 1-800-HOLIDAY");
     console.assert(convertPhoneWord("GIMMEPIZZA") === "4466374992", "Unable to convert GIMMEPIZZA");
     console.assert(convertPhoneWord("(902)Lottery") === "9025688379", "Unable to convert (902)Lottery");
