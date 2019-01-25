@@ -55,16 +55,12 @@ function convertPhoneWord(phoneWord) {
                     {
                         correctedArray.push(j+2)
                     }
-
                 }
-
             } 
         }
+        correctedNumberString = correctedArray.join('');
+        return correctedNumberString;
     }
-
-    correctedNumberString = correctedArray.join('');
-    return correctedNumberString;
-
 }
 
 //    ^
