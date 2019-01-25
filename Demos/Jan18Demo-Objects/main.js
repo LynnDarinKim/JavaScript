@@ -25,6 +25,10 @@ me.sayHi();
 
 
 
+console.log("==============")
+console.log(me.address["street"]);
+
+
 
 
 

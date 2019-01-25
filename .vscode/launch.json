@@ -9,7 +9,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "http://localhost:80/Assignment/Assignment1B/Question2",
+            "url": "http://localhost:80/Sandbox/",
             "webRoot": "${workspaceFolder}"
         }
     ]
