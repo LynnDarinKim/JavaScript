@@ -12,7 +12,7 @@
 * 4. All your code must be contained in the section outlined below
 */
 
-//               1     2     3     4     5     6      7     8
+//               2     3     4     5     6     7      8     9
 var buttons = ["abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"] //DO NOT MODIFY
 
 
@@ -26,9 +26,9 @@ function convertPhoneWord(phoneWord) {
     //"1-800-HOLIDAY"
     var phoneWordArray = [];
     var correctedArray = [];
+    var correctedNumberString = "";
 
     //[1,-,8,0,0,-,H,O,L,I,D,A,Y]
-    phoneWordArray = phoneWord.split('');
 
     if(phoneWord === null)
     {
@@ -38,7 +38,9 @@ function convertPhoneWord(phoneWord) {
     {
         return "";
     }
-    else{
+    else
+    {
+        phoneWordArray = phoneWord.split('');
         for(var i = 0; i < phoneWordArray.length; i++)
         {
             if(isNumeric(phoneWordArray[i]) == true)
@@ -49,9 +51,9 @@ function convertPhoneWord(phoneWord) {
             {
                 for(var j = 0; j < buttons.length; j++)
                 {
-                    if(buttons[j].indexOf(phoneWord[i]) !== -1)
+                    if(buttons[j].indexOf(phoneWord[i].toLowerCase()) !== -1)
                     {
-                        correctedArray.push(j+1)
+                        correctedArray.push(j+2)
                     }
 
                 }
@@ -60,9 +62,8 @@ function convertPhoneWord(phoneWord) {
         }
     }
 
-    var correctedNumber = "";
-    correctedNumber = correctedArray.join('');
-    return correctedNumber;
+    correctedNumberString = correctedArray.join('');
+    return correctedNumberString;
 
 }
 
