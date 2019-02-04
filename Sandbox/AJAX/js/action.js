@@ -50,7 +50,7 @@
     // call_btn.addEventListener('click', ajaxDemo);
     call_btn.addEventListener('click', function() {
         ajax({
-            url: '../data/ajax-desc.txt',
+            url: '../AJAX/data/ajax-desc.txt',
             dataType: 'text'
         }).then(function(data){
             print_area.textContent = data;

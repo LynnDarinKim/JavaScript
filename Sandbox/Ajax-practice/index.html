@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax 비동기 통신</title>
+  <style>
+    body {width: 740px; margin: 100px auto; font: 1rem/1.5 "Spoqa Han Sans";}
+    nav {margin-bottom: 50px;}
+    nav ul {list-style: none; padding-left: 0; display: flex;}
+    nav li { box-sizing: border-box; flex: 1 0 50%; text-align: center; }
+    nav a {display: block; padding: 0.8em; color: #7e7e7e; border-top: 2px solid #d7d7d7; border-bottom: 4px double #d7d7d7; text-decoration: none; transition: all 0.15s ease-out;}
+    nav a:hover, nav a.is-active {color: #1990c0; border-color: #1990c0; border-bottom: 4px solid #1990c0;}
+  </style>
+  <link rel="stylesheet" href="/Kim-Darin-w0421043/Sandbox/Ajax-practice/css/ediya.css">
+</head>
+<body>
+
+<!-- TEXT -->
+<!--
+  <button type="button" class="call-ajax-data-button">서버에 데이터 요청</button>
+  <p class="print-area"></p>
+-->
+
+<!-- HTML -->
+
+  <nav>
+    <ul>
+      <li><a href="/Kim-Darin-w0421043/Sandbox/Ajax-practice/data/ajax-define.html">Ajax란?</a></li>
+      <li><a href="/Kim-Darin-w0421043/Sandbox/Ajax-practice/data/ajax-http-request.html">HTTP request 만들기</a></li>
+    </ul>
+  </nav>
+  <main class="content"></main>
+
+
+<!-- XML / JSON -->
+<!--
+<header class="app-header">
+  <h1 class="brand">
+    <a href="https://www.ediya.com/" target="_blank">
+      <span class="a11y-hidden">EDIYA COFFEE</span>
+    </a>
+  </h1>
+  <button type="button" class="button is-open">
+    <img src="https://raw.githubusercontent.com/yamoo9/assets/master/images/ediya/navigation-button.gif" alt="메뉴 열기">
+  </button>
+  <nav hidden class="app-navigation">
+    <ul class="reset-list">
+      <li><a href="#">메뉴</a></li>
+      <li><a href="#">이디야멤버스</a></li>
+      <li><a href="#">이디야커피랩</a></li>
+      <li><a href="#">이디야컬쳐랩</a></li>
+      <li><a href="#">공지사항</a></li>
+      <li><a href="#">매장찾기</a></li>
+    </ul>
+    <button type="button" class="button is-close-menu" aria-label="메뉴 닫기">×</button>
+  </nav>
+</header>
+
+<main class="app-main">
+  <ul class="ediya-menu reset-list"></ul>
+</main>
+-->
+
+<script src="js/Dom.js"></script>
+<script src="js/ajax.js"></script>
+<script src="js/action.js"></script>
+</body>
+</html>

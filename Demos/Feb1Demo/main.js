@@ -1,5 +1,5 @@
 // fetch api
-fetch('http://api.tvmaze.com/search/shows?q=lost')
+fetch('https://openlibrary.org/api/books?bibkeys=ISBN:9780980200447&jscmd=data&format=json')
   .then(response => response.json()) // 200ms = function(response) {return resopnse.json()} //when the response's got, pull out-extract the json from the response 
   .then(json => console.log(json)) // 100ms = function(json) {console.log(json)} // pass json into this callback 
 
