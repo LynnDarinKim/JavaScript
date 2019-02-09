@@ -1,4 +1,6 @@
-'use strict';
+(function() {
+
+    'use strict';
 
     // create variable to use built-in methods in XMLHttpRequest()
     var xhr = new XMLHttpRequest();
@@ -59,3 +61,5 @@
 
     // request to server
     xhr.send();
+
+}) ()

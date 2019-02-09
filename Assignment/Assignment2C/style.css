@@ -1,0 +1,50 @@
+:root {
+  --chrome__background-color: #159687;
+  font-size: 10px;
+}
+
+
+body {
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font: 1.6rem/1.5 "NanumBarunGothic", sans-serif;
+    background: var(--chrome__background-color);
+}
+
+
+
+#deck{
+    overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+    width: 94vw;
+  min-width: 48rem;
+  max-width: 110rem;
+  height: 50vh;
+}
+
+
+.card {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  list-style: none;
+  margin:0.5em;
+  padding: 0;
+}
+
+
+img {
+  height: 200px;
+}
+
+figcaption {
+  margin-top: 20px;
+
+}
