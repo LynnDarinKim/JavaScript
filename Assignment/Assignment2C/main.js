@@ -47,15 +47,15 @@
             // cardArray[4].suit = "CLUBS";
 
             // Four of a Kind Test / Full House / Straight / Three of a kind
-            cardArray[0].value = "ACE";
+            cardArray[0].value = "8";
             cardArray[0].suit = "HEARTS";
-            cardArray[1].value = "ACE";
+            cardArray[1].value = "QUEEN";
             cardArray[1].suit = "HEARTS";
-            cardArray[2].value = "10";
+            cardArray[2].value = "5";
             cardArray[2].suit = "HEARTS";
             cardArray[3].value = "10";
             cardArray[3].suit = "HEARTS";
-            cardArray[4].value = "JACK";
+            cardArray[4].value = "3";
             cardArray[4].suit = "HEARTS";
 
             // switch value for later use
@@ -107,10 +107,9 @@
               console.log(Object.values(duplicatedSuitCount));
               var duplicatedSuitArray = Object.values(duplicatedSuitCount)
 
-
-
             var result = "";
 
+            
             // Royal Flush------------------------------------------
             // calculate total number value
             var totalValue = 0;
@@ -197,36 +196,19 @@
             // Pair------------------------------------------
             var valueCountArray = Object.values(duplicatedValueCount);
             console.log(valueCountArray)
-            for(var i = 0; i < valueCountArray.length; i++) {
-                if(valueCountArray[i] === 2) {
-                    result = handsOrder[8]
-                }
+            if(valueCountArray.length > 3) 
+            // because two pair will allow this count array contain only 2,1,2 which is the length of 3
+            {
+                result = handsOrder[8]
             }
 
-
-            
-
-            
-        //     for(var i = 0; i < cardValueArray.length-2; i++){
-        //     if(cardValueArray[i] == cardValueArray[i+1] && cardValueArray[i+1] == cardValueArray[i+2]) {
-        //         result = handsOrder[2]
-        //     }
-        // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            // High Card------------------------------------------
+            var valueCountArray = Object.values(duplicatedValueCount);
+            console.log(valueCountArray)
+            if(valueCountArray.length === 5) 
+            {
+                result = handsOrder[9]
+            }
 
 
             // UI
