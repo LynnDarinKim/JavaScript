@@ -3,44 +3,63 @@
   font-size: 10px;
 }
 
+body * {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 90vh;
   font: 1.6rem/1.5 "NanumBarunGothic", sans-serif;
-    background: var(--chrome__background-color);
+  background: var(--chrome__background-color);
 }
 
 #deck{
-  overflow: auto;
   display: flex;
+  flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   width: 94vw;
   min-width: 48rem;
   max-width: 110rem;
-  height: 50vh;
+  height: 40vh;
 }
 
 
 .card {
   display: flex;
+  /* justify-content: center; */
   flex-flow: column;
   align-items: center;
+  flex: 1 0 50px;
   list-style: none;
   margin:0.5em;
   padding: 0;
 }
 
+h1 {
+  font-size: 45px;
+}
+
 
 img {
-  height: 200px;
+  display: block;
+  width: 90%;
+  height: auto;
 }
 
 figcaption {
   margin-top: 20px;
-
+  font-weight: bold;
+  font-size: 20px
 }
+
+p {
+  font-weight: bold;
+  font-size: 30px;
+}
+
