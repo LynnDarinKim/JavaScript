@@ -2,70 +2,61 @@
 
     'use strict';
 
+/*
+    Author: Darin Kim
+    Date: Feb. 11, 2019
+    Description: Assignment 2C
+
+*/
+
     var xhr = new XMLHttpRequest();
 
-    var infoObject;
-
+    // request 5 random cards from the api
     xhr.open('GET', 'https://deckofcardsapi.com/api/deck/new/draw/?count=5', true);
 
     xhr.onreadystatechange = function() {
         if( (xhr.status === 200 || xhr.status === 304) && xhr.readyState === 4 ) {
 
+            // parse JSON data and get as object
+            var infoObject;
             infoObject = JSON.parse(xhr.responseText);
 
-            // to check if it works
+            // extract cards array from object data
             var cardArray = infoObject.cards;
 
-            console.log(cardArray)
+            // to check the cardArray
 
-            var handsOrder = ["Royal Flush", "Straight Flush", "Four of Kind", "Full House", "Flush", "Straight", "Three of Kind", "Double Pair", "Pair", "High Card"];
+            // store the results
+            var handsOrder = [
+                "Royal Flush", "Straight Flush", "Four of Kind", "Full House", 
+                "Flush", "Straight", "Three of Kind", "Double Pair", "Pair", "High Card"];
 
-            //HEARTS  CLUBS  SPADES  DIAMONDS
+                        //HEARTS  CLUBS  SPADES  DIAMONDS
+                        // TEST data with value and suit only (no image)
+                        cardArray[0].value = "1";
+                        cardArray[0].suit = "CLUBS";
 
-            // Rotal Flush Test
-            // cardArray[0].value = "10";
-            // cardArray[0].suit = "CLUBS";
-            // cardArray[1].value = "JACK";
-            // cardArray[1].suit = "CLUBS";
-            // cardArray[2].value = "QUEEN";
-            // cardArray[2].suit = "CLUBS";
-            // cardArray[3].value = "KING";
-            // cardArray[3].suit = "CLUBS";
-            // cardArray[4].value = "ACE";
-            // cardArray[4].suit = "CLUBS";
+                        cardArray[1].value = "2";
+                        cardArray[1].suit = "HEARTS";
 
-            // Straight Flush Test
-            // cardArray[0].value = "8";
-            // cardArray[0].suit = "CLUBS";
-            // cardArray[1].value = "7";
-            // cardArray[1].suit = "CLUBS";
-            // cardArray[2].value = "6";
-            // cardArray[2].suit = "CLUBS";
-            // cardArray[3].value = "5";
-            // cardArray[3].suit = "CLUBS";
-            // cardArray[4].value = "4";
-            // cardArray[4].suit = "CLUBS";
+                        cardArray[2].value = "2";
+                        cardArray[2].suit = "HEARTS";
 
-            // Four of a Kind Test / Full House / Straight / Three of a kind
-            cardArray[0].value = "8";
-            cardArray[0].suit = "HEARTS";
-            cardArray[1].value = "QUEEN";
-            cardArray[1].suit = "HEARTS";
-            cardArray[2].value = "5";
-            cardArray[2].suit = "HEARTS";
-            cardArray[3].value = "10";
-            cardArray[3].suit = "HEARTS";
-            cardArray[4].value = "3";
-            cardArray[4].suit = "HEARTS";
+                        cardArray[3].value = "2";
+                        cardArray[3].suit = "HEARTS";
 
-            // switch value for later use
+                        cardArray[4].value = "7";
+                        cardArray[4].suit = "HEARTS";
+
+
+            // switch value for later use. (will be sorted in ascending order)
             for(var i = 0; i < cardArray.length; i++) {
                 if(cardArray[i].value == "ACE") {
                     cardArray[i].value = "14"
-                }              
+                }
                 else if(cardArray[i].value == "KING") {
                     cardArray[i].value = "13"
-                }  
+                }
                 else if(cardArray[i].value == "QUEEN") {
                     cardArray[i].value = "12"
                 }
@@ -76,8 +67,9 @@
                     cardArray[i].value = parseInt(cardArray[i].value)}
             }
 
-            // sort the cardArray by values (ascending)
+            // sort the cardArray by values in ascending order to 
             // cite: http://www.javascriptkit.com/javatutors/arraysort2.shtml
+            
             cardArray.sort(function(a, b) {
                 return a.value-b.value
             })
@@ -90,125 +82,254 @@
                 cardSuitArray.push(cardArray[i].suit)
             }
 
-            console.log(cardValueArray)
-            console.log(cardSuitArray)
-
             // count duplicate values
             // cite: https://stackoverflow.com/questions/19395257/how-to-count-duplicate-value-in-an-array-in-javascript
             var duplicatedValueCount = {};
             cardValueArray.forEach(function(i) { duplicatedValueCount[i] = (duplicatedValueCount[i]||0) + 1;});
-            console.log(duplicatedValueCount);
+
+            var duplicatedValueCountArray = Object.values(duplicatedValueCount);
 
             // count duplicated suits
             var duplicatedSuitCount = {};
             cardSuitArray.forEach(function(i) { duplicatedSuitCount[i] = (duplicatedSuitCount[i]||0) + 1;});
-            console.log(duplicatedSuitCount);
-              
-              console.log(Object.values(duplicatedSuitCount));
-              var duplicatedSuitArray = Object.values(duplicatedSuitCount)
 
-            var result = "";
+            var duplicatedSuitArray = Object.values(duplicatedSuitCount)
 
-            
+            // to check stored data in each array
+            console.log('card value array')
+            console.log(cardValueArray) // the number of card value
+            console.log('duplicated suits array')
+            console.log(duplicatedSuitArray) // the number of duplicated suits
+            console.log('duplicated value count array')
+            console.log(duplicatedValueCountArray) // the number of duplicated values
+
+
             // Royal Flush------------------------------------------
             // calculate total number value
-            var totalValue = 0;
-            for(var i = 0; i < cardValueArray.length; i++) {
-                totalValue += parseInt(cardValueArray[i])
-            }
-            console.log(totalValue)
-            // value should be total 60 to become Royal Flush
-            if(totalValue == 60) {
-                if(duplicatedSuitArray[0] == 5) {
-                    result = handsOrder[0]
-                }
-            }
 
+            function determineRoyalFlush(cardValueArray, duplicatedSuitArray) {
+
+                var result = true;
+
+                // value should be total 60 to become Royal Flush
+                var totalValue = 0;
+                for(var i = 0; i < cardValueArray.length; i++) {
+                    totalValue += parseInt(cardValueArray[i])
+                }
+
+                // value should be total 60 to become Royal Flush
+                if(cardValueArray.length == 5 && totalValue == 60 && duplicatedSuitArray[0] == 5) {
+                    result = true;
+                }
+                else {
+                    result = false;
+                }
+
+                return result;
+            }
 
             // Straight Flush------------------------------------------
-            for(var i = 0; i < cardValueArray.length; i++) {
-                if(cardValueArray[i] > 1 && cardValueArray[i] < 11) {
-                    if(duplicatedSuitArray[0] === 5) {
-                        if(cardValueArray[0]+4 === cardValueArray[4])
-                        {
-                            result = handsOrder[1]
-                        }
-                    }
-                }
-            }
+            function determineStraightFlush(cardValueArray, duplicatedSuitArray) {
 
+                var result = true;
+                
+                if(duplicatedSuitArray[0] === 5) {
+
+                    if(result = true)
+                    {
+                        for(var i = 0; i < cardValueArray.length; i++) {
+                            if (cardValueArray[i] > 1 && cardValueArray[i] < 11) {
+        
+                                if(cardValueArray[0]+4 == cardValueArray[4])
+                                {
+                                    result = true;
+                                } else {result = false}
+        
+                            }
+                        }
+                        for(var i = 0; i < cardValueArray.length-1; i++) {
+                            if(cardValueArray[i]+1 !== cardValueArray[i+1]) {
+                                result = false;
+                            } 
+                        }
+
+                    }
+                } else {
+                    result = false
+                }
+
+                return result;
+            }
 
             // Four of a Kind------------------------------------------
-            var valueCountArray = Object.values(duplicatedValueCount);
+            function determineFourKind(duplicatedValueCountArray) {
 
-            for(var i = 0; i < valueCountArray.length; i++) {
-                if(valueCountArray[i] === 4)
-                {
-                    result = handsOrder[2]
-                }
+                var result = true;
+
+                if(duplicatedValueCountArray.length === 2 && 
+                    (duplicatedValueCountArray[0] === 4 || duplicatedValueCountArray[1] === 4)) {
+                        result = true;
+                    } else {
+                        result = false;
+                    }
+
+                return result;
             }
+
 
             // Full House------------------------------------------
-            var valueCountArray = Object.values(duplicatedValueCount);
+            function determineFullHouse(duplicatedValueCountArray) {
 
-            for(var i = 0; i < valueCountArray.length; i++) {
-                if((valueCountArray[i] === 3 && valueCountArray[i+1] === 2) ||
-                    (valueCountArray[i] === 2 && valueCountArray[i+1] === 3) )
-                {
-                    result = handsOrder[3]
+                var result = true;
+
+                for(var i = 0; i < duplicatedValueCountArray.length-1; i++) {
+                    if((duplicatedValueCountArray[i] === 3 && duplicatedValueCountArray[i+1] === 2) ||
+                        (duplicatedValueCountArray[i] === 2 && duplicatedValueCountArray[i+1] === 3) )
+                    {
+                        result = true;
+                    }
+                    else {result = false};
                 }
+
+                return result;
             }
+
 
             // Flush------------------------------------------
-            if(duplicatedSuitCount === 5) {
-                result = handsOrder[4]
+            function determineFlush(duplicatedSuitArray) {
+
+                var result = true;
+
+                if(duplicatedSuitArray[0] === 5) {
+                    result = true;
+                } else {result = false}
+
+                return result;
             }
+
 
             // Straight------------------------------------------
-            for(var i = 0; i < cardValueArray.length; i++) {
-                if(cardValueArray[i] > 1 && cardValueArray[i] < 11) {
-                    if(cardValueArray[0]+4 === cardValueArray[4])
-                    {
-                        result = handsOrder[5]
+            function determineStraight(cardValueArray) {
+
+                var result = true;
+
+                for(var i = 0; i < cardValueArray.length; i++) {
+                    if(cardValueArray[i] > 1 && cardValueArray[i] < 11) {
+                        if(cardValueArray[0]+4 === cardValueArray[4]) {
+                            result = true;
+                        } else {
+                            result = false;
+                        }
+                    } else {
+                        result = false;
                     }
                 }
+
+                return result;
             }
+
 
             // Three of a Kind------------------------------------------
-            var valueCountArray = Object.values(duplicatedValueCount);
+            function determineThreeKind (duplicatedValueCountArray) {
 
-            for(var i = 0; i < valueCountArray.length; i++) {
-                if(valueCountArray[i] === 3)
-                {
-                    result = handsOrder[6]
+                var result = true;
+
+                if(duplicatedValueCountArray.indexOf(3) !== -1) {
+                    result = true;
+                } else {
+                    result = false;
                 }
+
+                return result;
             }
+
 
             // Two Pair------------------------------------------
-            var valueCountArray = Object.values(duplicatedValueCount);
-            console.log(valueCountArray)
-            if(valueCountArray.length === 3) 
-            // because two pair will allow this count array contain only 2,1,2 which is the length of 3
-            {
-                result = handsOrder[7]
+            function determineTwoPair(duplicatedValueCountArray) {
+
+                var result = true;
+
+                if(duplicatedValueCountArray.indexOf(3) == -1) {
+                    if(duplicatedValueCountArray.length === 3) 
+                    // because two pair will allow this count array contain only 2,1,2 which is the length of 3
+                    {
+                        result = true;
+                    } else {
+                        result = false;
+                    }
+                } else {
+                    result = false;
+                }
+
+                return result;
             }
+
+
+
+            // if(duplicatedValueCountArray.length === 3) 
+            // // because two pair will allow this count array contain only 2,1,2 which is the length of 3
+            // // what if 3,1,1? 
+            // {
+            //     result = handsOrder[7]
+            // }
 
             // Pair------------------------------------------
-            var valueCountArray = Object.values(duplicatedValueCount);
-            console.log(valueCountArray)
-            if(valueCountArray.length > 3) 
-            // because two pair will allow this count array contain only 2,1,2 which is the length of 3
-            {
-                result = handsOrder[8]
+            function determinePair(duplicatedValueCountArray) {
+
+                var result = true;
+
+                if(duplicatedValueCountArray.length == 4) {
+                // because two pair will allow this count array contain only 2,1,1,1 which is the length of 4
+                    result = true;
+                }
+                else {
+                    result = false;
+                }
+
+                return result;
             }
 
-            // High Card------------------------------------------
-            var valueCountArray = Object.values(duplicatedValueCount);
-            console.log(valueCountArray)
-            if(valueCountArray.length === 5) 
-            {
-                result = handsOrder[9]
+            
+            function determineGameResult(cardArray, cardValueArray, duplicatedSuitArray, duplicatedValueCountArray) {
+
+                var gameResult = "";
+
+                if (determineRoyalFlush(cardValueArray, duplicatedSuitArray) == true) {
+                    gameResult = handsOrder[0];
+                }
+                else if(determineStraightFlush(cardValueArray, duplicatedSuitArray) == true) {
+                    gameResult = handsOrder[1];
+                }
+                else if (determineFourKind(duplicatedValueCountArray) == true) {
+                    gameResult = handsOrder[2];
+                }
+                else if (determineFullHouse(duplicatedValueCountArray) == true) {
+                    gameResult = handsOrder[3];
+                }
+                else if (determineFlush(duplicatedSuitArray) == true) {
+                    gameResult = handsOrder[4];
+                }
+                else if (determineStraight(cardValueArray) == true) {
+                    gameResult = handsOrder[5];
+                }
+                else if (determineThreeKind (duplicatedValueCountArray) == true) {
+                    gameResult = handsOrder[6];
+                }
+                else if (determineTwoPair(duplicatedValueCountArray) == true) {
+                    gameResult = handsOrder[7];
+                }
+                else if (determinePair(duplicatedValueCountArray) == true) {
+                    gameResult = handsOrder[8];
+                }
+                else {
+                    gameResult = handsOrder[9] + " " + "The highest card of" + " " + cardArray[4].code;
+                }
+
+                return gameResult;
             }
+
+
+
 
 
             // UI
@@ -235,7 +356,7 @@
 
             // display result
             var targetElementResult = document.getElementById('result');
-            targetElementResult.innerHTML = '<p>' + 'Your result:' + result + '</p>'
+            targetElementResult.innerHTML = '<p>' + 'Your result:' + determineGameResult(cardArray, cardValueArray, duplicatedSuitArray, duplicatedValueCountArray) + '</p>'
 
 
         } 
