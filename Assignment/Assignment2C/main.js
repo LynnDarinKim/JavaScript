@@ -8,31 +8,35 @@
     Description: Assignment 2C
 
 */
-
+    // create variable to use built-in methods in XMLHttpRequest()
     var xhr = new XMLHttpRequest();
 
+    // create array to store parsed json information
+    var infoObject;
+
+    // use open method. get json from url and make it asynchronous with 'true' (can be omitted) 
     // request 5 random cards from the api
     xhr.open('GET', 'https://deckofcardsapi.com/api/deck/new/draw/?count=5', true);
 
+    // when server respond, check what kind of event is happening 
     xhr.onreadystatechange = function() {
+
+        // if it is ready or not modified and the operation is complete,
         if( (xhr.status === 200 || xhr.status === 304) && xhr.readyState === 4 ) {
 
-            // parse JSON data and get as object
-            var infoObject;
+            // parse JSON into an object data
             infoObject = JSON.parse(xhr.responseText);
 
-            // extract cards array from object data
+            // to check the object data
+            console.log('data parsed from original json')
+            console.log(infoObject)
+
+            // extract cards array only from the object
             var cardArray = infoObject.cards;
 
-            // to check the cardArray
 
-            // store the results
-            var handsOrder = [
-                "Royal Flush", "Straight Flush", "Four of Kind", "Full House", 
-                "Flush", "Straight", "Three of Kind", "Double Pair", "Pair", "High Card"];
-
-                        //HEARTS  CLUBS  SPADES  DIAMONDS
                         // TEST data with value and suit only (no image)
+                        // HEARTS  CLUBS  SPADES  DIAMONDS
                         cardArray[0].value = "1";
                         cardArray[0].suit = "CLUBS";
 
@@ -67,12 +71,13 @@
                     cardArray[i].value = parseInt(cardArray[i].value)}
             }
 
+
             // sort the cardArray by values in ascending order to 
             // cite: http://www.javascriptkit.com/javatutors/arraysort2.shtml
-            
             cardArray.sort(function(a, b) {
                 return a.value-b.value
             })
+
 
             var cardValueArray = [];
             var cardSuitArray = [];
@@ -293,6 +298,11 @@
             function determineGameResult(cardArray, cardValueArray, duplicatedSuitArray, duplicatedValueCountArray) {
 
                 var gameResult = "";
+
+                // store the hands order results
+                var handsOrder = [
+                "Royal Flush", "Straight Flush", "Four of Kind", "Full House", 
+                "Flush", "Straight", "Three of Kind", "Double Pair", "Pair", "High Card"];
 
                 if (determineRoyalFlush(cardValueArray, duplicatedSuitArray) == true) {
                     gameResult = handsOrder[0];

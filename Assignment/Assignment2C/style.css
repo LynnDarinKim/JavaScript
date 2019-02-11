@@ -3,7 +3,6 @@
   font-size: 10px;
 }
 
-
 body {
   margin: 0;
   display: flex;
@@ -15,15 +14,12 @@ body {
     background: var(--chrome__background-color);
 }
 
-
-
 #deck{
-    overflow: auto;
+  overflow: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-
-    width: 94vw;
+  width: 94vw;
   min-width: 48rem;
   max-width: 110rem;
   height: 50vh;
