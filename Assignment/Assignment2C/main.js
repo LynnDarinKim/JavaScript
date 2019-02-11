@@ -1,6 +1,6 @@
 (function() { // IIFE to prevent the global pollution
 
-    'use strict';
+    // 'use strict';
 
 /*
     Author: Darin Kim
@@ -19,7 +19,17 @@
 
     // use open method. get json from url and make it asynchronous with 'true' (can be omitted) 
     // request 5 random cards from the api
-    xhr.open('GET', 'https://deckofcardsapi.com/api/deck/new/draw/?count=5', true);
+    // xhr.open('GET', 'https://www.mikecaines.com/cards/royalflush.json', true);
+    // xhr.open('GET', 'https://www.mikecaines.com/cards/straightflush.json', true);
+    // xhr.open('GET', 'https://www.mikecaines.com/cards/fourofakind.json', true);
+    // xhr.open('GET', 'https://www.mikecaines.com/cards/fullhouse.json', true);
+    // xhr.open('GET', 'https://www.mikecaines.com/cards/flush.json', true);
+    // xhr.open('GET', 'https://www.mikecaines.com/cards/highstraight.json', true);
+    xhr.open('GET', 'https://www.mikecaines.com/cards/lowstraight.json', true);
+    // xhr.open('GET', 'https://www.mikecaines.com/cards/threeofakind.json', true);
+    // xhr.open('GET', 'https://www.mikecaines.com/cards/twopair.json', true);
+    // xhr.open('GET', 'https://www.mikecaines.com/cards/pair.json', true);
+    // xhr.open('GET', 'https://www.mikecaines.com/cards/acehigh.json', true);
 
     // when server respond, check what kind of event is happening 
     xhr.onreadystatechange = function() {
@@ -62,7 +72,19 @@
             // switch value for later use. (will be sorted in ascending order.)
             for(var i = 0; i < cardArray.length; i++) {
                 if(cardArray[i].value == "ACE") {
-                    cardArray[i].value = 14
+
+                    cardArray[i].value = 0;
+
+                    var inCaseOfLowStraight = ["A", "2", "3", "4", "5"];
+                    
+                    for(var j = 0; j < cardArray.length; j++) {
+                        if (inCaseOfLowStraight.indexOf(cardArray[j].value) === -1) {
+                            cardArray[i].value = 14;
+                        }
+                        else {
+                            cardArray[i].value = 1;
+                        }
+                    }
                 }
                 else if(cardArray[i].value == "KING") {
                     cardArray[i].value = 13
@@ -259,18 +281,18 @@
                 var result = true;
 
                 // check consecutive numbers between 2~10
-                for(var i = 0; i < cardValueArray.length; i++) {
-                    if(cardValueArray[i] > 1 && cardValueArray[i] < 11) {
+                    for(var i = 0; i < cardValueArray.length; i++) {
                         if(cardValueArray[0]+4 === cardValueArray[4]) {
                             result = true;
-                        } else {
-                            result = false;
-                        }
-                    } else {
-                        result = false;
+                        } else {result = false;}
                     }
-                }
-
+                    if( result = true) {
+                        for(var j = 0; j < cardValueArray.length-1; j++) {
+                            if(cardValueArray[j]+1 === cardValueArray[j+1]) {
+                                result = true;
+                            }else {result = false}
+                        }
+                    }
                 return result;
             }
 
@@ -300,15 +322,12 @@
                 // two pair will allow this count array to contain only [1,2,2] [2,1,2] [2,2,1] which is the length of 3
                 // but not [3,1,1]. so check if index of 3 exists.  
                 if(duplicatedValueCountArray.indexOf(3) == -1) {
-                    if(duplicatedValueCountArray.length === 3) 
-                    {
+                    if(duplicatedValueCountArray.length === 3) {
+                        
                         result = true;
-                    } else {
-                        result = false;
-                    }
-                } else {
-                    result = false;
-                }
+
+                    } else {result = false;}
+                } else {result = false;}
 
                 return result;
             }
@@ -411,7 +430,7 @@
     // request to server
     xhr.send();
 
-}) ()
+}) ();
 
 
 
