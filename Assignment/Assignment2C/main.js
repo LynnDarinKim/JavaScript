@@ -1,6 +1,6 @@
 (function() { // IIFE to prevent the global pollution
 
-    // 'use strict';
+    'use strict';
 
 /*
     Author: Darin Kim
@@ -19,13 +19,14 @@
 
     // use open method. get json from url and make it asynchronous with 'true' (can be omitted) 
     // request 5 random cards from the api
+    // xhr.open('GET', 'https://deckofcardsapi.com/api/deck/new/draw/?count=5', true);
     // xhr.open('GET', 'https://www.mikecaines.com/cards/royalflush.json', true);
-    // xhr.open('GET', 'https://www.mikecaines.com/cards/straightflush.json', true);
+    xhr.open('GET', 'https://www.mikecaines.com/cards/straightflush.json', true);
     // xhr.open('GET', 'https://www.mikecaines.com/cards/fourofakind.json', true);
     // xhr.open('GET', 'https://www.mikecaines.com/cards/fullhouse.json', true);
     // xhr.open('GET', 'https://www.mikecaines.com/cards/flush.json', true);
     // xhr.open('GET', 'https://www.mikecaines.com/cards/highstraight.json', true);
-    xhr.open('GET', 'https://www.mikecaines.com/cards/lowstraight.json', true);
+    // xhr.open('GET', 'https://www.mikecaines.com/cards/lowstraight.json', true);
     // xhr.open('GET', 'https://www.mikecaines.com/cards/threeofakind.json', true);
     // xhr.open('GET', 'https://www.mikecaines.com/cards/twopair.json', true);
     // xhr.open('GET', 'https://www.mikecaines.com/cards/pair.json', true);
@@ -53,19 +54,19 @@
             // Number: 2 3 4 5 6 7 8 9 10
             // Human(?): JACK   QUEEN   KING    ACE
             // Suits: HEARTS  CLUBS  SPADES  DIAMONDS
-            // cardArray[0].value = "JACK";
+            // cardArray[0].value = "7";
             // cardArray[0].suit = "HEARTS";
 
-            // cardArray[1].value = "QUEEN";
-            // cardArray[1].suit = "HEARTS";
+            // cardArray[1].value = "8";
+            // cardArray[1].suit = "CLUBS";
 
-            // cardArray[2].value = "KING";
+            // cardArray[2].value = "9";
             // cardArray[2].suit = "HEARTS";
 
-            // cardArray[3].value = "ACE";
-            // cardArray[3].suit = "HEARTS";
+            // cardArray[3].value = "10";
+            // cardArray[3].suit = "CLUBS";
 
-            // cardArray[4].value = "10";
+            // cardArray[4].value = "JACK";
             // cardArray[4].suit = "HEARTS";
 
 
@@ -281,18 +282,24 @@
                 var result = true;
 
                 // check consecutive numbers between 2~10
-                    for(var i = 0; i < cardValueArray.length; i++) {
-                        if(cardValueArray[0]+4 === cardValueArray[4]) {
-                            result = true;
-                        } else {result = false;}
-                    }
-                    if( result = true) {
-                        for(var j = 0; j < cardValueArray.length-1; j++) {
-                            if(cardValueArray[j]+1 === cardValueArray[j+1]) {
-                                result = true;
-                            }else {result = false}
+
+                    if(cardValueArray[0]+4 === cardValueArray[4]) {
+                        result = true;
+
+                        if( result == true) {
+                            for(var j = 0; j < cardValueArray.length-1; j++) {
+                                if(cardValueArray[j]+1 === cardValueArray[j+1]) {
+                                    result = true;
+                                    
+                                }else {
+                                    result = false
+                                    break;}
+                            }
                         }
-                    }
+
+                    } else {result = false;}
+
+
                 return result;
             }
 
