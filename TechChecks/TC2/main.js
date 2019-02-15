@@ -37,11 +37,15 @@
 
       var aminos = [];
 
-      for(var i = 0; i < jsonLookupData.length; i++){
-        if(jsonLookupData[i].codons.includes(codons[i])){
-          aminos.push(jsonLookupData[i].abbr);
+      for(var j = 0; j < codons.length; j++) 
+      {
+        for(var i = 0; i < jsonLookupData.length; i++){
+          if(jsonLookupData[i].codons.includes(codons[j])){
+            aminos.push(jsonLookupData[i].abbr);
+          }
         }
       }
+
 
       // ADD CODE TO COMPLETE THE FUNCTION HERE...
       // you will get a console.assert error until the function is coded correctly
