@@ -22,12 +22,23 @@
         // //test
 
         var getLongitudeLatitudeName = function(jsonInput) {
-            return jsonInput.states.map(function(x){
+            return jsonInput.states.filter(function(str){return str[2] === "Canada"}).map(function(x){
                 if(x[5] !== null && x[6] !== null && x[2] !== null) {
-                    return {"type": "Feature","geometry": {"type": "Point","coordinates": [parseFloat(`${(x[5])}`), parseFloat(`${x[6]}`)]},"properties": {"name": `${x[2]}`}};   
+                    return {"type": "Feature","geometry": {"type": "Point","coordinates": [parseFloat(`${(x[5])}`), parseFloat(`${x[6]}`)]},"properties": {
+                        "name": `${x[2]}`, 
+                        "popupContent" : 
+                            `Callsign : ${x[1]}` + "<br>" +
+                            `ICAO24 : ${x[0]}`   + "<br>" +
+                            `Longitude : ${x[5]}`  + "<br>" +
+                            `Latitude : ${x[6]}`  + "<br>" +
+                            `Velocity : ${x[9]}`  + "<br>" +
+                            `Altitude : ${x[13]}`  + "<br>" +
+                            `Heading  : ${x[10]}`}};   
                 } else {return 0} 
             });
         }
+
+        
 
         // reference: https://gist.github.com/geog4046instructor/80ee78db60862ede74eacba220809b64
         function createCustomIcon(Feature, latlng) {
@@ -40,12 +51,12 @@
             return L.marker(latlng, {icon: planeIcon})
         }
 
-        var getMarkerInfo = function(jsonInput) {
-            
-            return jsonInput.states.map(function(x) {
-                return `callsign : ${x[1]}` + "\n" + `icao24 : ${x[0]}`  + `longitude : ${x[5]}` + `latitude : ${x[6]}` + `velocity : ${x[9]}` + `altitude : ${x[13]}` + `heading  : ${x[10]}`
 
-            })
+        function onEachFeature(feature, layer) {
+            // does this feature have a property named popupContent?
+            if (feature.properties && feature.properties.popupContent) {
+                layer.bindPopup(feature.properties.popupContent);
+            }
         }
 
 
@@ -54,22 +65,17 @@
             return response.json();
         })
         .then(function(json){
-            setTimeout(update, 300000);// reference: https://stackoverflow.com/questions/38925157/proper-way-to-update-data-using-setinterval
+            setTimeout(update, 30000);// reference: https://stackoverflow.com/questions/38925157/proper-way-to-update-data-using-setinterval
             console.log(json)
             console.log(getLongitudeLatitudeName(json))
-            console.log(getMarkerInfo(json))
 
             var myLayerOptions = {
+                onEachFeature: onEachFeature,
                 pointToLayer : createCustomIcon
             }
 
-            // t.appendChild(i)
 
-            var z = document.createElement('p')
-            z.innerHTML = 'sldkjflskdjf'
-
-
-        L.geoJSON(getLongitudeLatitudeName(json), myLayerOptions).addTo(map).bindPopup(document.body.appendChild(z)).on(onclick);
+        L.geoJSON(getLongitudeLatitudeName(json), myLayerOptions).addTo(map).on(onclick);
 
 
 
@@ -83,7 +89,7 @@
 
 
         }).catch(function(err){
-            setTimeout(update, 300000);
+            setTimeout(update, 30000);
         })// end of fetch 
         }
         update();
