@@ -1,0 +1,40 @@
+  "time": 1551118179,
+  "states": [
+    [
+      "e49406",		: icao24 - ICAO24 address of the transmitter in hex string representation.
+      "GLO1423 ",	: callsign - callsign of the vehicle. Can be None if no callsign has been received.
+      "Brazil", 	: origin_country - inferred through the ICAO24 address
+      1551118179,	: time_position - seconds since epoch of last position report. Can be None if there was no position report received by OpenSky within 15s before.
+      1551118179,	: last_contact - seconds since epoch of last received message from this transponder
+      -47.5317, 	: longitude - in ellipsoidal coordinates (WGS-84) and degrees. Can be None
+      -22.6009,		: latitude - in ellipsoidal coordinates (WGS-84) and degrees. Can be None
+      8839.2, 		: geo_altitude - geometric altitude in meters. Can be None
+      false,		: on_ground - true if aircraft is on ground (sends ADS-B surface position reports).
+      213.93,		: velocity - over ground in m/s. Can be None if information not present
+      110.7,		: heading - in decimal degrees (0 is north). Can be None if information not present.
+      -5.85,		: vertical_rate - in m/s, incline is positive, decline negative. Can be None if information not present.
+      null,		: sensors - serial numbers of sensors which received messages from the vehicle within the validity period of this state vector. Can be None if no filtering for sensor has been requested.
+      9395.46,		: baro_altitude - barometric altitude in meters. Can be None
+      "5722",		: squawk - transponder code aka Squawk. Can be None
+      true,		: spi - special purpose indicator
+      0			: position_source - origin of this state’s position: 0 = ADS-B, 1 = ASTERIX, 2 = MLAT, 3 = FLARM
+    ],
+
+
+information
+
+- for pointing : longitude, latitude, name
+
+- for marker popups : callsign, icao24, latitude, longitude, velocity, geo_altitude, heading
+
+
+
+
+
+
+
+
+
+
+
+
