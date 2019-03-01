@@ -1,5 +1,11 @@
 (function(){
 
+    /*
+    Author: Darin Kim
+    Date: Mar. 4, 2019
+    Description: Assignment 3C
+    */
+
     //create map in leaflet and tie it to the div called 'theMap'
     var map = L.map('theMap').setView([42, -60], 4);
 

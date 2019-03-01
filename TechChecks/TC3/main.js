@@ -20,6 +20,7 @@
 
 (function(){
 
+
     fetch(`https://restcountries.eu/rest/v2/all`)
         .then(response => response.json())
         .then(json => {
@@ -36,8 +37,8 @@
 
     var getPopulation = function(jsonInput) {
 
-        var totalPopulation = jsonInput.filter(function(item){
-            return item.borders !== undefined && item.borders.some(function(currentValue){ // filter border
+        var totalPopulation = jsonInput.filter(function(item){// filter border
+            return item.borders !== undefined && item.borders.some(function(currentValue){ 
                 return currentValue == "CHN"})}).filter(function(item){// filter language
                     return item.languages !== undefined && item.languages.map(x=>x.name).some(function(currentValue){
                         return currentValue == "English"})}).map(x=>x.population).reduce(function(a,b) {return a+b}, 0)
